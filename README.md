@@ -1,5 +1,3 @@
-# GitHub Action: Assign Azure Blueprints
-
 GitHub Actions to assign an Azure Blueprint. For more information on Azure Blueprints, see the [Azure Blueprints documentation](https://docs.microsoft.com/en-us/azure/governance/blueprints/overview?WT.mc_id=blueprintsextension-github-nepeters).
 
 ## Azure Authentication
