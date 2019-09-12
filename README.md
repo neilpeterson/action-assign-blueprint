@@ -14,16 +14,15 @@ Next, create three GitHub secrets hold the service principal credentials.
 | AZURECLIENTID | appId |
 | AZUREPASSWORD | password |
 
-
 ## Assign Blueprint
 
 ```
 - name: Assign Azure Blueprint
+  uses: neilpeterson/action-assign-blueprint@master
   env:
     AZURETENANTID: ${{ secrets.AZURETENANTID }}
-    AZURECLIENTID: ${{ secrets.AZURECLIENTID }}
     AZUREPASSWORD: ${{ secrets.AZUREPASSWORD }}
-  uses: neilpeterson/action-assign-blueprint@master
+    AZURECLIENTID: ${{ secrets.AZURECLIENTID }}
   with:
     AssignmentName: actionBlueprintPublish
     azureManagementGroupName: nepeters-internal
