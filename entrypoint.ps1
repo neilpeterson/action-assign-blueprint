@@ -40,7 +40,7 @@ if ($BlueprintLocation -eq 'Subscription') {
 
 # Connect to Azure
 $creds = New-Object System.Management.Automation.PSCredential ($ClientId, $ClientSecret)
-Connect-AzAccount -ServicePrincipal -Tenant $TenantId -Credential creds -WarningAction silentlyContinue
+Connect-AzAccount -ServicePrincipal -Tenant $TenantId -Credential $creds -WarningAction silentlyContinue
 
 # Get Blueprint object
 if ($BlueprintVersion -eq 'latest') {
