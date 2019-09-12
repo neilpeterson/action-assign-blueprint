@@ -14,7 +14,7 @@ $ClientId = $Env:AZURECLIENTID
 $ClientSecret = $Env:AZUREPASSWORD | ConvertTo-SecureString -AsPlainText -Force
 
 # Location Details
-$BlueprintLocation = $Env:INPUT_BLUEPRINTLOCATIONSCOPE
+$BlueprintLocation = $Env:INPUT_SCOPE
 $BlueprintManagementGroup = $Env:INPUT_AZUREMANAGEMENTGROUPNAME
 $BlueprintSubscriptionID = $Env:INPUT_AZURESUBSCRIPTIONID
 

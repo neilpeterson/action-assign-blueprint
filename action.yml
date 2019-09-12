@@ -5,6 +5,10 @@ branding:
   icon: 'book-open'
   color: 'blue'
 inputs:
+  scope:
+    description: 'Scope at which the blueprint is stored. Valid values are ManagamentGroup and Subscription'
+    required: false
+    default: ManagementGroup
   azureManagementGroupName:
     description: 'Azure Management Group Name'
     required: false
@@ -14,14 +18,10 @@ inputs:
   blueprintName:
     description: 'Blueprint name'
     required: true
-  blueprintLocationScope:
-    description: 'ManagementGroup or Subscription'
-    required: false
-    default: ManagementGroup
-  AssignmentName:
+  assignmentName:
     description: 'The name for the assignment'
     required: true
-  AssignmentFilePath:
+  assignmentFilePath:
     description: 'A JSON file containing the assignment details and parameter values'
     required: true
   blueprintVersion:

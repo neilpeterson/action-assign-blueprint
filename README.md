@@ -38,11 +38,12 @@ All configuration parameters:
 
 | Name | Description | Required |
 |:---|:---|---:|
+| scope | Scope at which the blueprint is stored. Valid values are `ManagamentGroup` and `Subscription`. Defaults to `ManagementGroup`. | false |
 | azureManagementGroupName | The Azure Management group at which the blueprint is stored. | false |
 | azureSubscriptionID | The Azure subscription at which the blueprint is stored and / or where the blueprint will be assigned. | false |
 | blueprintName | The blueprint name. | true |
-| blueprintLocationScope | < this arg will be removed >   | false |
-| AssignmentFilePath | The path to a JSON file containing the assignment details and parameter values. | true |
+| assignmentName | Name for the assignment. | true |
+| assignmentFilePath | The path to a JSON file containing the assignment details and parameter values. | true |
 | blueprintVersion | The version of the blueprint to assign. Defaults to `latest`. | false |
 | wait | Wait for assignment to complete before moving to the next task. Defaults to `false`. | false |
 | timeout | Time in seconds before wait timeout'. Defaults to `240 seconds`. | false |
