@@ -1,0 +1,41 @@
+name: 'Azure Blueprints'
+author: 'neilpeterson'
+description: 'Create and Assign Azure Blueprints'
+branding:
+  icon: 'book-open'
+  color: 'blue'
+inputs:
+  azureManagementGroupName:
+    description: 'Azure Management Group Name'
+    required: false
+  azureSubscriptionID:
+    description: 'Azure Subscription ID'
+    required: false
+  blueprintName:
+    description: 'Blueprint name'
+    required: true
+  blueprintLocationScope:
+    description: 'ManagementGroup or Subscription'
+    required: false
+    default: ManagementGroup
+  AssignmentName:
+    description: 'The name for the assignment'
+    required: true
+  AssignmentFilePath:
+    description: 'A JSON file containing the assignment details and parameter values'
+    required: true
+  blueprintVersion:
+    description: 'The version of the blueprint to assign. Defaults to `latest'
+    required: false
+    default: latest
+  wait:
+    description: 'Wait for assignment to complete before moving to the next task'
+    required: false
+    default: false
+  timeout:
+    description: 'Time in seconds before wait timeout'
+    required: false
+    default: 240
+runs:
+  using: docker
+  image: neilpeterson/github-assign-blueprint:0.1
