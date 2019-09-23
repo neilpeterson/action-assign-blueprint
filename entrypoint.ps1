@@ -26,8 +26,19 @@ $Timeout = $Env:INPUT_TIMEOUT
 $BlueprintVersion = $Env:INPUT_BLUEPRINTVERSION
 
 # Install Azure PowerShell modules
-Find-Module Az.Accounts | Install-Module -Force
-Find-Module Az.Blueprint | Install-Module -Force
+if (Get-Module -ListAvailable -Name Az.Accounts) {
+    Write-Output "Az.Accounts module is allready installed."
+ }
+ else {
+    Find-Module Az.Accounts | Install-Module -Force
+ }
+
+ if (Get-Module -ListAvailable -Name Az.Blueprint) {
+    Write-Output "Az.Blueprint module is allready installed."
+ }
+ else {
+    Find-Module Az.Blueprint | Install-Module -RequiredVersion 0.2.5 -Force
+ }
 
 # Set Blueprint Scope (Subscription / Management Group)
 if ($BlueprintLocation -eq 'ManagementGroup') {
@@ -54,11 +65,12 @@ $body = Get-Content -Raw -Path $AssignmentFilePath | ConvertFrom-Json
 $body.properties.blueprintId = $bluePrintObject.id
 $body | ConvertTo-Json -Depth 4 | Out-File -FilePath $AssignmentFilePath -Encoding utf8 -Force
 
-# Get blueprint assignment
-try {
-    Get-AzBlueprintAssignment -Name $AssignmentName | Out-Null
+# Create Blueprint assignment
+$AssignmentObject = Get-AzBlueprintAssignment -Name $AssignmentName -erroraction 'silentlycontinue'
+
+if ($AssignmentObject) {
     Set-AzBlueprintAssignment -Name $AssignmentName -Blueprint $bluePrintObject -AssignmentFile $AssignmentFilePath -SubscriptionId $BlueprintSubscriptionID
-} catch {
+} else {
     New-AzBlueprintAssignment -Name $AssignmentName -Blueprint $bluePrintObject -AssignmentFile $AssignmentFilePath -SubscriptionId $BlueprintSubscriptionID
 }
 
