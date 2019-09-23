@@ -38,4 +38,4 @@ inputs:
     default: 240
 runs:
   using: docker
-  image: neilpeterson/github-assign-blueprint:0.1
+  image: Dockerfile
